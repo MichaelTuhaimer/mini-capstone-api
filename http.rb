@@ -2,6 +2,7 @@ require "http"
 require "tty-prompt"
 
 prompt = TTY::Prompt.new
+# choice = prompt.select("Would you to view or create products?", %w(View Create))
 products = %w(Broom Mop Dustpan Vacuum Soap All)
 product = prompt.select("Which product would you like to see?:", products)
 if product == "Broom"
@@ -13,13 +14,16 @@ elsif product == "Dustpan"
 elsif product == "Vacuum"
   product = "/products/4.json"
 elsif product == "Soap"
-  product = "/products/5.json"
+  product = "/products/8.json"
 elsif product == "All"
   product = "/products.json"
 end
 
-response = HTTP.get("http://localhost:3000#{product}")
-data = response.parse
+response1 = HTTP.get("http://localhost:3000#{product}")
+data1 = response1.parse
+
+# response2 = HTTP.post("http://localhost:3000/products?#{name}$#{price}$#{image_url}$#{description}.json")
+# data2 =response2.parse
 
 system "clear"
-puts data
+puts data1
