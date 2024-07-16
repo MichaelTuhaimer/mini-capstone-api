@@ -1,4 +1,8 @@
 class Product < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
+  validates :price, presence: true, numericality: { greater_than: 0 }
+  validates :description, presence: true, length: { minimum: 1, maximum: 500 }
+
   def is_discounted?
     price <= 10
   end
@@ -10,8 +14,4 @@ class Product < ApplicationRecord
   def total
     price + tax
   end
-
-  validates :name, presence: true, uniqueness: true
-  validates :price, presence: true, numericality: { greater_than: 0 }
-  validates :description, presence: true, length: { minimum: 1, maximum: 500 }
 end

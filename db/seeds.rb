@@ -1,3 +1,3 @@
-Product.create({ name: "broom", price: 8.99, image_url: "https://images.thdstatic.com/productImages/cdb96cef-2f72-49d8-9d59-36ff570fa077/svn/push-brooms-br904-64_1000.jpg", description: "This is a broom. Does it really need a description?" })
-Product.create({ name: "broom", price: 8.99, image_url: "https://images.thdstatic.com/productImages/cdb96cef-2f72-49d8-9d59-36ff570fa077/svn/push-brooms-br904-64_1000.jpg", description: "This is a broom. Does it really need a description?" })
-Product.create({ name: "dustpan", price: 4.99, image_url: "https://m.media-amazon.com/images/I/51o011M7yVL._AC_UF894,1000_QL80_.jpg", description: "This is a dustpan. Does it really need a description?" })
+Supplier.create({ name: "Costco", email: "costco@costco.com", phone_number: "(800)123-4567" })
+Supplier.create({ name: "Wal-Mart", email: "wal-mart@walmart.com", phone_number: "(123)456-7890" })
+Supplier.create({ name: "Target", email: "target@target.com", phone_number: "(098)765-4321" })
