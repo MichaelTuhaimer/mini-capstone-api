@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: { greater_than: 0 }
-  validates :description, presence: true, length: { minimum: 1, maximum: 500 }
+  validates :description, presence: true, length: { in: 1..500 }
 
   def supplier
     Supplier.find_by(id: supplier_id)
