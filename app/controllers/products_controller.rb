@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
   end
 
   def index
+    puts "-" * 50
+    puts "THE CURRENT USER IS:"
+    pp current_user
+    puts "-" * 50
     @products = Product.all
     render :index
   end
