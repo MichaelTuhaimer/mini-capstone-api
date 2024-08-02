@@ -4,8 +4,10 @@ one:
   name: MyString
   price: 1
   description: MyText
+  supplier: one
 
 two:
   name: MyString
   price: 1
   description: MyText
+  supplier: one

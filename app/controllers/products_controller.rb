@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
+
   def show
     @product = Product.find_by(id: params[:id])
     render :show
