@@ -27,4 +27,12 @@ class Product < ApplicationRecord
   def total
     price + tax
   end
+
+  def primary_image_url
+    if images.length > 0
+      images[0].url
+    else
+      "https://www.svgrepo.com/show/508699/landscape-placeholder.svg"
+    end
+  end
 end

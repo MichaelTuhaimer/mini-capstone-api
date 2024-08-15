@@ -2,9 +2,9 @@ require "test_helper"
 
 class OrdersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = User.create(name: "Test", email: "[test@test.com](mailto:test@test.com)", password: "password")
-    @order = Order.create(user_id: @user.id, product_id: Product.first.id, quantity: 10)
-    post "/sessions.json", params: { email: "[test@test.com](mailto:test@test.com)", password: "password" }
+    @user = User.create(name: "Test", email: "test@test.com", password: "password")
+    @order = Order.create(user_id: @user.id)
+    post "/sessions.json", params: { email: "test@test.com", password: "password" }
     data = JSON.parse(response.body)
     @jwt = data["jwt"]
   end
@@ -16,9 +16,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
 
   test "create" do
     assert_difference "Order.count", 1 do
-      post "/orders.json",
-        params: { product_id: Product.first.id, quantity: 10 },
-        headers: { "Authorization" => "Bearer #{@jwt}" }
+      post "/orders.json", headers: { "Authorization" => "Bearer #{@jwt}" }
       assert_response 200
     end
   end
@@ -28,6 +26,6 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
 
     data = JSON.parse(response.body)
-    assert_equal ["id", "quantity", "subtotal", "tax", "total", "product", "created_at", "updated_at"], data.keys
+    assert_equal ["id", "subtotal", "tax", "total", "carted_products", "created_at", "updated_at"], data.keys
   end
 end
